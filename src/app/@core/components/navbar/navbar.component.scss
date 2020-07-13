@@ -2,10 +2,11 @@
 
 .navbar {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: baseline;
   overflow: hidden;
   padding: 0.8rem;
+  margin: 0;
   background-color: $navbar-bg-color;
   color: $navbar-font-color;
 
