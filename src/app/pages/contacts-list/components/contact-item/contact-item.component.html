@@ -1,11 +1,19 @@
-<div class="contact-item">
-  <img
-    src="../../../../../assets/images/placeholders/profile-placeholder.png"
-    class="contact-item__image"
-    height="50"
-  />
+<div class="contact-item" *ngIf="contact">
+  <ng-container *ngIf="contact?.image; else placeholder">
+    <img
+      [src]="contact?.image"
+      class="contact-item__image"
+      placeholder="Profile Picture"
+    />
+  </ng-container>
+  <ng-template #placeholder>
+    <img
+      src="../../../../../assets/images/placeholders/profile-placeholder.png"
+      class="contact-item__placeholder"
+    />
+  </ng-template>
   <div class="contact-item__content">
-    <p>Nicole Styles</p>
-    <p>@adam32</p>
+    <p>{{ contact?.firstName }} {{ contact?.lastName }}</p>
+    <p>{{ contact?.email }}</p>
   </div>
 </div>

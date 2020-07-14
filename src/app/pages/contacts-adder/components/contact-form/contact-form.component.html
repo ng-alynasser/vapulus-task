@@ -1,1 +1,109 @@
-<p>contact-form works!</p>
+<div>
+  <app-upload-input (imageFile)="onUploadImage($event)"></app-upload-input>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field>
+      <mat-label>First name</mat-label>
+      <input
+        matInput
+        type="text"
+        name="firstName"
+        formControlName="firstName"
+        required
+      />
+      <mat-error *ngIf="isControlHasError('firstName', 'required')">
+        First name is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="isControlHasError('firstName', 'minlength')">
+        Must be at least <strong>3 characters</strong>
+      </mat-error>
+      <mat-error *ngIf="isControlHasError('firstName', 'maxlength')">
+        Must be at most <strong>26 characters</strong>
+      </mat-error>
+      <mat-error *ngIf="isControlHasError('firstName', 'pattern')">
+        Must contain only <strong>letters and numbers</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Last name</mat-label>
+      <input
+        matInput
+        type="text"
+        name="lastName"
+        formControlName="lastName"
+        required
+      />
+      <mat-error *ngIf="isControlHasError('lastName', 'required')">
+        First name is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="isControlHasError('lastName', 'minlength')">
+        Must be at least <strong>3 characters</strong>
+      </mat-error>
+      <mat-error *ngIf="isControlHasError('lastName', 'maxlength')">
+        Must be at most <strong>26 characters</strong>
+      </mat-error>
+      <mat-error *ngIf="isControlHasError('lastName', 'pattern')">
+        Must contain only <strong>letters and numbers</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Postal Code</mat-label>
+      <mat-select formControlName="code">
+        <mat-option *ngFor="let code of codes" [value]="code">
+          {{ code }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Mobile number</mat-label>
+      <input
+        matInput
+        type="text"
+        name="mobileNumber"
+        formControlName="mobileNumber"
+        required
+      />
+      <mat-error *ngIf="isControlHasError('mobileNumber', 'required')">
+        Mobile number is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="isControlHasError('mobileNumber', 'invalidPhone')">
+        <strong>Invalid</strong> mobile number
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email address</mat-label>
+      <input
+        matInput
+        type="email"
+        name="email"
+        formControlName="email"
+        required
+      />
+      <mat-error *ngIf="isControlHasError('email', 'required')">
+        Email address is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="isControlHasError('email', 'email')">
+        Must be a <strong>valid email</strong>
+      </mat-error>
+      <mat-error *ngIf="isControlHasError('email', 'minlength')">
+        Must be at least <strong>3 characters</strong>
+      </mat-error>
+      <mat-error *ngIf="isControlHasError('email', 'maxlength')">
+        Must be at most <strong>320 characters</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" color="success">Add Contact</button>
+    <button
+      mat-raised-button
+      type="button"
+      color="primary"
+      routerLink="/contacts"
+    >
+      Cancel
+    </button>
+  </form>
+</div>

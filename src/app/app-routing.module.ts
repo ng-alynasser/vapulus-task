@@ -20,7 +20,7 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'contacts-adder',
+        path: 'new-contact',
         loadChildren: () =>
           import('./pages/contacts-adder/contacts-adder.module').then(
             (m) => m.ContactsAdderModule

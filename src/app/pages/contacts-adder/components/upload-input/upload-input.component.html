@@ -1,1 +1,24 @@
-<p>upload-input works!</p>
+<ng-container *ngIf="previewImage; else previewHolder">
+  <img [src]="previewImage" alt="placeholder" height="50" width="50" />
+</ng-container>
+<ng-template #previewHolder>
+  <img
+    height="50"
+    width="50"
+    src="../../../../../assets/images/placeholders/profile-placeholder.png"
+  />
+</ng-template>
+<input
+  type="file"
+  #uploadInput
+  (change)="uploadImage($event)"
+  style="display: none;"
+/>
+<button
+  mat-raised-button
+  type="button"
+  color="success"
+  (click)="uploadInput.click()"
+>
+  Add Photo
+</button>

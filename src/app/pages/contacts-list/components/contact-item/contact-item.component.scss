@@ -2,8 +2,11 @@
   display: flex;
   justify-items: center;
   align-content: center;
-  .contact-item__image {
+  &__image,
+  &__placeholder {
     border-radius: 50%;
+    height: 80px;
+    width: 80px;
   }
 
   p {

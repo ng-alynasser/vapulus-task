@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from './services/contacts.service';
+import { Observable } from 'rxjs';
+import { Contact } from './models/contact.model';
 
 @Component({
   selector: 'app-contacts-list',
@@ -7,11 +9,19 @@ import { ContactService } from './services/contacts.service';
   styleUrls: ['./contacts-list.component.scss'],
 })
 export class ContactsListComponent implements OnInit {
+  contacts$: Observable<Contact[]>;
+  recentContacts$: Observable<Contact[]>;
+  loading$: Observable<boolean>;
+
   constructor(private readonly contactsService: ContactService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loading$ = this.contactsService.loading;
+    this.contacts$ = this.contactsService.contacts;
+    this.recentContacts$ = this.contactsService.recentContacts;
+  }
 
-  searchContactsByName(name: string) {
-    this.contactsService.searchContacts(name).subscribe();
+  searchContacts(name: string): void {
+    this.contacts$ = this.contactsService.searchContacts(name);
   }
 }

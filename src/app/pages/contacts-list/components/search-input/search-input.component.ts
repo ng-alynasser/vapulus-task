@@ -25,8 +25,12 @@ import {
 })
 export class SearchInputComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('searchInput', { static: false }) searchInput: ElementRef;
-  @Output() searchValue: EventEmitter<string> = new EventEmitter<string>();
+  @Output() searchValue: EventEmitter<string>;
   private destroy$: Subject<void>;
+
+  constructor() {
+    this.searchValue = new EventEmitter();
+  }
 
   ngOnInit(): void {
     this.destroy$ = new Subject<void>();
