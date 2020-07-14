@@ -1,15 +1,29 @@
 .contact-item {
+  padding: 0.5rem 0.8rem;
   display: flex;
   justify-items: center;
   align-content: center;
+  border-bottom: 1px solid #bfbfbf;
   &__image,
   &__placeholder {
     border-radius: 50%;
-    height: 80px;
-    width: 80px;
+    border: 2px solid #bfbfbf;
+    height: 50px;
+    width: 50px;
   }
 
-  p {
-    font-weight: 500;
+  &__content {
+    padding-left: 1rem;
+    align-self: center;
+    &__top {
+      font-size: 1.2rem;
+      margin: 0;
+      color: #7b7d7b;
+    }
+    &__bottom {
+      font-size: 1rem;
+      margin: 0;
+      color: #bfbfbf;
+    }
   }
 }

@@ -1,7 +1,7 @@
 <div class="contact-item" *ngIf="contact">
   <ng-container *ngIf="contact?.image; else placeholder">
     <img
-      [src]="contact?.image"
+      src="../../../../../assets/images/placeholders/profile-placeholder.png"
       class="contact-item__image"
       placeholder="Profile Picture"
     />
@@ -13,7 +13,9 @@
     />
   </ng-template>
   <div class="contact-item__content">
-    <p>{{ contact?.firstName }} {{ contact?.lastName }}</p>
-    <p>{{ contact?.email }}</p>
+    <p class="contact-item__content__top">
+      {{ contact?.firstName | titlecase }} {{ contact?.lastName | titlecase }}
+    </p>
+    <p class="contact-item__content__bottom">{{ contact?.email }}</p>
   </div>
 </div>

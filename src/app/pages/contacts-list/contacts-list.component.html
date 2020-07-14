@@ -1,12 +1,17 @@
-<section>
+<section class="contacts-list">
   <app-search-input (searchValue)="searchContacts($event)"></app-search-input>
-  <div>
-    <h1>Add New Contact</h1>
-    <button mat-mini-fab routerLink="/new-contact">
-      <mat-icon>add</mat-icon>
+  <div class="contacts-list__header">
+    <h3>Add New Contacts</h3>
+    <button
+      type="button"
+      routerLink="/new-contact"
+      class="contacts-list__header__button"
+    >
+      <mat-icon size="3">add</mat-icon>
     </button>
   </div>
   <ng-container *ngIf="loading$; else noData">
+    <h3 class="recent-contacts__title">Latest Contacts</h3>
     <ng-container *ngFor="let recentContact of recentContacts$ | async">
       <app-contact-item [contact]="recentContact"></app-contact-item>
     </ng-container>
