@@ -1,20 +1,32 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ContentLayoutComponent } from './@core';
 
 const routes: Routes = [
   {
-    path: 'contacts-list',
-    loadChildren: () =>
-      import('./pages/contacts-list/contacts-list.module').then(
-        (m) => m.ContactsListModule
-      ),
+    path: '',
+    redirectTo: '/contacts',
+    pathMatch: 'full',
   },
   {
-    path: 'contacts-adder',
-    loadChildren: () =>
-      import('./pages/contacts-adder/contacts-adder.module').then(
-        (m) => m.ContactsAdderModule
-      ),
+    path: '',
+    component: ContentLayoutComponent,
+    children: [
+      {
+        path: 'contacts',
+        loadChildren: () =>
+          import('./pages/contacts-list/contacts-list.module').then(
+            (m) => m.ContactsListModule
+          ),
+      },
+      {
+        path: 'contacts-adder',
+        loadChildren: () =>
+          import('./pages/contacts-adder/contacts-adder.module').then(
+            (m) => m.ContactsAdderModule
+          ),
+      },
+    ],
   },
 ];
 

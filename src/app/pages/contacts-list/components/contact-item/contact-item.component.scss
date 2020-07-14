@@ -1,0 +1,12 @@
+.contact-item {
+  display: flex;
+  justify-items: center;
+  align-content: center;
+  .contact-item__image {
+    border-radius: 50%;
+  }
+
+  p {
+    font-weight: 500;
+  }
+}
